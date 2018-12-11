@@ -18,7 +18,6 @@ hjson==3.0.1
 idna==2.7
 jmespath==0.9.3
 kappa==0.7.0
-lambda-packages==0.20.0
 overpy==0.4
 placebo==0.8.2
 psycopg2==2.7.5

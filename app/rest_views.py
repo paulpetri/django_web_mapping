@@ -16,7 +16,7 @@ from rest_framework.authtoken.models import Token
 # from rest_framework.decorators import api_view, permission_classes
 from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
 from django.utils.decorators import method_decorator
-
+import urllib.request
 
 class UsersList(generics.ListAPIView):
     permission_classes = (permissions.IsAuthenticated,)
@@ -225,17 +225,12 @@ def register(request):
 @permission_classes((permissions.AllowAny,))
 @csrf_exempt
 def show_poi(request):
-    import json
+    file = urllib.request.urlopen(
+        'https://data.smartdublin.ie/dataset/58969481-417e-4f5a-b8ea-18b56419d0ed/resource/6ec29525-3ec8-45f3-b937-c6ab4539b827/download/dccrdpanddclway.geojson')
+    data_file = file.read()
+    file.close()
 
-    json_data = open("/Volumes/Untitled/Year 4/Web Mapping/django-wmap2019/static/dublin.json").read()
-    # data1 = json.load(json_data)
-    # data = json.dumbs(json_data) #converts to a json structure
-
-    print(json_data)
-
-    return Response({"Data": json_data}, status=status.HTTP_200_OK)
-
-
+    return Response({"data": data_file}, status=status.HTTP_200_OK)
 
 
 
