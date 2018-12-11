@@ -220,3 +220,23 @@ def register(request):
         return Response({"detail": "User Created"}, status=status.HTTP_201_CREATED)
 
 
+
+@api_view(["GET", ])
+@permission_classes((permissions.AllowAny,))
+@csrf_exempt
+def show_poi(request):
+    import json
+
+    json_data = open("/Volumes/Untitled/Year 4/Web Mapping/django-wmap2019/static/dublin.json").read()
+    # data1 = json.load(json_data)
+    # data = json.dumbs(json_data) #converts to a json structure
+
+    print(json_data)
+
+    return Response({"Data": json_data}, status=status.HTTP_200_OK)
+
+
+
+
+
+

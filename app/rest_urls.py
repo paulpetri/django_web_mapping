@@ -15,4 +15,6 @@ urlpatterns = [
     url(r'^updateposition/$', rest_views.UpdatePosition.as_view(), name='update-position'),
     url(r'^getamenities/$', rest_views.get_amenities, name='get-amenities'),
     url(r'^register/$', rest_views.register, name='register'),
+    url(r'^showpoi/$', rest_views.show_poi, name='show-poi'),
+
 ]
